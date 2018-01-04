@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  constraints(year: /\d{4}/, month: /\d{1,2}/, mday: /\d{1,2}/) do
+    get 'baby/:year/:month/:mday', to: 'baby_logs#index'
+  end
 end
