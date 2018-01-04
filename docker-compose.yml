@@ -3,6 +3,7 @@ version: "3"
 services:
   app:
     build: .
+    command: bin/rails s
     volumes:
       - gem:/usr/local/bundle
       - .:/bblog
