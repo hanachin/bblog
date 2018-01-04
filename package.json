@@ -1,5 +1,7 @@
 {
   "name": "bblog",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "hyperapp": "^1.0.1"
+  }
 }
