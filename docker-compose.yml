@@ -9,6 +9,8 @@ services:
       - .:/bblog
     ports:
       - 3000:3000
+    environment:
+      - DATABASE_URL=postgres://postgres@db
 
   db:
     image: postgres:10.1
