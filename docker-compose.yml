@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    volumes:
+      - gem:/usr/local/bundle
+      - .:/bblog
+
+volumes:
+  gem:
