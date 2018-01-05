@@ -10,5 +10,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && apt-get update \
   && apt-get install -y yarn
 
+RUN apt-get install -y chromedriver
+
 RUN useradd -m bblog
 USER bblog
