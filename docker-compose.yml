@@ -12,6 +12,16 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres@db
 
+  test:
+    build: .
+    command: bin/rails spec
+    volumes:
+      - gem:/usr/local/bundle
+      - .:/bblog
+    environment:
+      - DATABASE_URL=postgres://postgres@db
+      - RAILS_ENV=test
+
   db:
     image: postgres:10.1
     volumes:
