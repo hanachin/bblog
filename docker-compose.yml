@@ -27,6 +27,11 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
 
+  chrome:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - "5900:5900"
+
 volumes:
   db-data:
   gem:
