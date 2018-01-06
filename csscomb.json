@@ -20,7 +20,7 @@
     "space-before-closing-brace": "\n",
     "space-before-colon": "",
     "space-before-combinator": " ",
-    "space-before-opening-brace": "\n",
+    "space-before-opening-brace": " ",
     "space-before-selector-delimiter": "",
     "strip-spaces": true,
     "unitless-zero": true,
