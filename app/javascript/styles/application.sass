@@ -10,29 +10,37 @@ body
 // normalize
 ul.log-types
   list-style-type: none
+
   padding-inline-start: 0
 
 .log-types
   display: grid
+
   grid-template-columns: repeat(3, 1fr)
   grid-gap: 10px
 
   &__log-type
     font-size: $log-type-size
+
     text-align: center
-    border-radius: 0.5em
+
     border: 5px solid $border-light
+    border-radius: .5em
     background-color: $bg-light
 
     &--current
-      background-color: $border-light
       border: 5px solid $border-dark
+      background-color: $border-light
 
 .log
   display: grid
+
   grid-template-columns: repeat(3, 1fr)
 
   &__current-log-type
-    grid-column: 2 / 3
     font-size: $log-type-size * 2
+
     text-align: center
+
+    grid-column: 2 / 3
+
