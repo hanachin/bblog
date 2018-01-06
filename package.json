@@ -11,6 +11,7 @@
     "hyperapp": "^1.0.1"
   },
   "devDependencies": {
+    "csscomb": "4.2.0",
     "prettier": "1.9.2",
     "webpack-dev-server": "^2.9.7"
   }
