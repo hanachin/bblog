@@ -1,19 +1,11 @@
-import '../styles/application.sass'
-import { h, app} from 'hyperapp'
+import "../styles/application.sass";
+import { h, app } from "hyperapp";
 
-const logTypes = [
-  "👶",
-  "🤱",
-  "🍼",
-  "💩",
-  "💧",
-  "🛀",
-]
+const logTypes = ["👶", "🤱", "🍼", "💩", "💧", "🛀"];
 
-const changeLogType = logType => state => ({ ...state, logType })
-const actions = { changeLogType }
-const state = { logType: logTypes[0] }
-
+const changeLogType = logType => state => ({ ...state, logType });
+const actions = { changeLogType };
+const state = { logType: logTypes[0] };
 
 /* TODO replace with fragment
 const view = (state, actions) => (
@@ -30,7 +22,13 @@ const view = (state, actions) => (
       <nav>
         <ul className="log-types">
           {logTypes.map(t => (
-            <li className={`log-types__log-type ${t == state.logType && "log-types__log-type--current"}`} onclick={() => actions.changeLogType(t)}><span>{t}</span></li>
+            <li
+              className={`log-types__log-type ${t == state.logType &&
+                "log-types__log-type--current"}`}
+              onclick={() => actions.changeLogType(t)}
+            >
+              <span>{t}</span>
+            </li>
           ))}
         </ul>
       </nav>
@@ -39,5 +37,5 @@ const view = (state, actions) => (
       <div className="log__current-log-type">{state.logType}</div>
     </main>
   </div>
-)
-app(state, actions, view, document.body)
+);
+app(state, actions, view, document.body);
