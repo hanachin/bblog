@@ -1,16 +1,7 @@
 import "../styles/BreastMilk.sass";
 import { h } from "hyperapp";
-
-const CurrentTime = () => (
-  <input className="current-time" type="time" value={`${new Date().getHours()}:${new Date().getMinutes()}`}/>
-)
-
-const TimeSelect = () => (
-  <select className="time-select" value="10">
-    {Array.from(Array(60).keys()).map((n) => <option value={n + 1}>{n + 1}</option>)}
-  </select>
-)
-
+import { CurrentTime } from "./CurrentTime";
+import { TimeSelect } from "./TimeSelect";
 
 export const BreastMilk = ({ state, actions }) => (
   <form className="breast-milk">
