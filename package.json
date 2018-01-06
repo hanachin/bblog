@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "prettier": "1.9.2",
+    "stylelint": "8.4.0",
     "webpack-dev-server": "^2.9.7"
   }
 }
