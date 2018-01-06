@@ -1,0 +1,30 @@
+@import "variables";
+
+.diaper-usage {
+  display: flex;
+  margin-top: 10px;
+
+  &__small,
+  &__medium,
+  &__large {
+    flex: auto;
+    text-align: center;
+    border-style: solid;
+    border-color: $border-light;
+    background-color: $bg-light;
+  }
+
+  &__small {
+    border-width: 5px 0 5px 5px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  &__medium {
+    border-width: 5px 1px 5px 1px;
+  }
+
+  &__large {
+    border-width: 5px 5px 5px 0;
+    border-radius: 0 5px 5px 0;
+  }
+}

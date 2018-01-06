@@ -1,0 +1,13 @@
+@import "placeholders";
+
+.poo {
+  @extend %baby-logs-form;
+
+  &__field {
+    @extend %baby-logs-form__field;
+  }
+
+  &__submit {
+    @extend %baby-logs-form__submit;
+  }
+}

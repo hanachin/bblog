@@ -1,0 +1,18 @@
+@import "variables";
+
+.poo-color--1 {
+  border-radius: 10px 10px 0 0;
+  margin-top: 10px;
+}
+
+.poo-color--7 {
+  border-radius: 0 0 10px 10px;
+}
+
+@for $n from 1 through 7 {
+  .poo-color--#{$n} {
+    font-size: 2em;
+    background-color: nth($poo-colors, $n);
+    padding-left: 10px;
+  }
+}
