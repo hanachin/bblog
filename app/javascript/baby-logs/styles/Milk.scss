@@ -1,0 +1,14 @@
+@import "variables";
+@import "placeholders";
+
+.milk {
+  @extend %baby-logs-form;
+
+  &__field {
+    @extend %baby-logs-form__field;
+  }
+
+  &__submit {
+    @extend %baby-logs-form__submit;
+  }
+}
