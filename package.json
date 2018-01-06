@@ -2,7 +2,7 @@
   "name": "bblog",
   "private": true,
   "scripts": {
-    "fmt": "prettier --write app/javascript/**/*.js"
+    "fmt": "prettier --write app/javascript/**/*.js && stylelint --fix 'app/javascript/**/*.scss'"
   },
   "dependencies": {
     "@rails/webpacker": "^3.2.0",
