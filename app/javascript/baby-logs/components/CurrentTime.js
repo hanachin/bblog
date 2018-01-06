@@ -1,4 +1,4 @@
-import "../styles/CurrentTime.sass";
+import "../styles/CurrentTime";
 import { h } from "hyperapp";
 
 export const CurrentTime = () => (

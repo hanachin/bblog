@@ -1,4 +1,4 @@
-import "../styles/BreastMilk.sass";
+import "../styles/BreastMilk";
 import { h } from "hyperapp";
 import { CurrentTime } from "./CurrentTime";
 import { TimeSelect } from "./TimeSelect";

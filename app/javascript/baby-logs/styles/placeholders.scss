@@ -1,0 +1,13 @@
+@import "variables";
+
+%text-like-input {
+  font-size: 2em;
+  border: 5px solid $border-light;
+  border-radius: 5px;
+  background-color: $bg-light;
+
+  &:focus {
+    border: 5px solid $border-dark;
+    background-color: $border-light;
+  }
+}

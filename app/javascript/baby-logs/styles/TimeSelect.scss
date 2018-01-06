@@ -1,0 +1,5 @@
+@import "placeholders";
+
+.time-select {
+  @extend %text-like-input;;
+}

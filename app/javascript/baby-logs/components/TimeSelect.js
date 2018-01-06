@@ -1,4 +1,4 @@
-import "../styles/TimeSelect.sass";
+import "../styles/TimeSelect";
 import { h } from "hyperapp";
 
 export const TimeSelect = () => (

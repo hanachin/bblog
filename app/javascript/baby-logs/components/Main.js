@@ -1,4 +1,4 @@
-import "../styles/main.sass";
+import "../styles/main";
 import { h } from "hyperapp";
 import { BreastMilk } from "./BreastMilk";
 

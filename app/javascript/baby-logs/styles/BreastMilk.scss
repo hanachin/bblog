@@ -1,0 +1,23 @@
+@import "variables";
+
+.breast-milk {
+  grid-column: 1 / -1;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  &__submit {
+    font-size: 2em;
+    position: relative;
+    bottom: 10px;
+    display: block;
+    width: 5em;
+    margin: 60px auto 0 auto;
+    border: 5px solid $border-light;
+    border-radius: 5px;
+    background-color: $bg-light;
+  }
+}
