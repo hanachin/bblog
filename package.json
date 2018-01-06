@@ -1,6 +1,9 @@
 {
   "name": "bblog",
   "private": true,
+  "scripts": {
+    "fmt": "prettier --write app/javascript/**/*.js"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.2.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
