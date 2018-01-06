@@ -28,12 +28,16 @@ const view = (state, actions) => (
   <div>
     <header>
       <nav>
-        <ul>
-          {logTypes.map(t => <li onclick={() => actions.changeLogType(t)}>{t}</li>)}
+        <ul className="log-types">
+          {logTypes.map(t => (
+            <li className={`log-types__log-type ${t == state.logType && "log-types__log-type--current"}`} onclick={() => actions.changeLogType(t)}><span>{t}</span></li>
+          ))}
         </ul>
       </nav>
     </header>
-    <main>{state.logType}</main>
+    <main className="log">
+      <div className="log__current-log-type">{state.logType}</div>
+    </main>
   </div>
 )
 app(state, actions, view, document.body)

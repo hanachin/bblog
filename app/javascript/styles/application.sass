@@ -1,0 +1,38 @@
+$bg-white: #f8f8f8
+$border-light: #eee
+$border-dark: #ddd
+$bg-light: #fafafa
+$log-type-size: 128px
+
+body
+  background-color: $bg-white
+
+// normalize
+ul.log-types
+  list-style-type: none
+  padding-inline-start: 0
+
+.log-types
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-gap: 10px
+
+  &__log-type
+    font-size: $log-type-size
+    text-align: center
+    border-radius: 0.5em
+    border: 5px solid $border-light
+    background-color: $bg-light
+
+    &--current
+      background-color: $border-light
+      border: 5px solid $border-dark
+
+.log
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+
+  &__current-log-type
+    grid-column: 2 / 3
+    font-size: $log-type-size * 2
+    text-align: center
