@@ -13,6 +13,6 @@ export const Pee = ({ state, actions }) => (
       <span>量</span>
       <DiaperUsage unit="💧"/>
     </label>
-    <input className="pee__submit" type="submit"/>
+    <input className="pee__submit" type="submit" value="💧記録"/>
   </form>
 )

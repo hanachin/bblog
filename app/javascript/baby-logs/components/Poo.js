@@ -18,6 +18,6 @@ export const Poo = ({ state, actions }) => (
       <span>量</span>
       <DiaperUsage unit="💩"/>
     </label>
-    <input className="poo__submit" type="submit"/>
+    <input className="poo__submit" type="submit" value="💩記録"/>
   </form>
 )

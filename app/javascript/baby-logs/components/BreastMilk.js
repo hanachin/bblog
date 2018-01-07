@@ -13,6 +13,6 @@ export const BreastMilk = ({ state, actions }) => (
       <span>時間</span>
       <TimeSelect/>
     </label>
-    <input className="breast-milk__submit" type="submit"/>
+    <input className="breast-milk__submit" type="submit" value="🤱記録"/>
   </form>
 )

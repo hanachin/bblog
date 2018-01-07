@@ -13,6 +13,6 @@ export const Bath = ({ state, actions }) => (
       <span>時間</span>
       <TimeSelect/>
     </label>
-    <input className="bath__submit" type="submit"/>
+    <input className="bath__submit" type="submit" value="🛀記録"/>
   </form>
 )

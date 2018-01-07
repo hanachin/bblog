@@ -18,6 +18,6 @@ export const Milk = ({ state, actions }) => (
       <span>量</span>
       <MilkAmountSelect/>
     </label>
-    <input className="milk__submit" type="submit"/>
+    <input className="milk__submit" type="submit" value="🍼記録"/>
   </form>
 )
