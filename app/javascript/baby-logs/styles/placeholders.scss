@@ -1,6 +1,7 @@
 @import "variables";
 
 %text-like-input {
+  appearance: none;
   font-size: 2em;
   border: 5px solid $border-light;
   border-radius: 5px;
@@ -22,6 +23,7 @@
   }
 
   &__submit {
+    appearance: none;
     font-size: 2em;
     position: relative;
     bottom: 10px;
