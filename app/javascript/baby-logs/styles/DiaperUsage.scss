@@ -4,9 +4,8 @@
   display: flex;
   margin-top: 10px;
 
-  &__small,
-  &__medium,
-  &__large {
+  &__little,
+  &__much {
     flex: auto;
     text-align: center;
     border-style: solid;
@@ -14,17 +13,13 @@
     background-color: $bg-light;
   }
 
-  &__small {
+  &__little {
     border-width: 5px 0 5px 5px;
     border-radius: 5px 0 0 5px;
   }
 
-  &__medium {
-    border-width: 5px 1px 5px 1px;
-  }
-
-  &__large {
-    border-width: 5px 5px 5px 0;
+  &__much {
+    border-width: 5px 5px 5px 1px;
     border-radius: 0 5px 5px 0;
   }
 }

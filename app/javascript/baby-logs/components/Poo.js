@@ -16,7 +16,7 @@ export const Poo = ({ state, actions }) => (
     </label>
     <label className="poo__field">
       <span>量</span>
-      <DiaperUsage/>
+      <DiaperUsage unit="💩"/>
     </label>
     <input className="poo__submit" type="submit"/>
   </form>
