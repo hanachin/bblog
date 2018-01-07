@@ -1,18 +1,26 @@
 @import "variables";
 
-.poo-color--1 {
-  border-radius: 10px 10px 0 0;
+.poo-color {
+  display: flex;
   margin-top: 10px;
-}
 
-.poo-color--7 {
-  border-radius: 0 0 10px 10px;
-}
-
-@for $n from 1 through 7 {
-  .poo-color--#{$n} {
+  > div {
+    flex: auto;
     font-size: 2em;
-    background-color: nth($poo-colors, $n);
-    padding-left: 10px;
+    text-align: center;
+
+    &:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+
+    &:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+
+    @for $n from 1 through 7 {
+      &:nth-child(#{$n}) {
+        background-color: nth($poo-colors, $n);
+      }
+    }
   }
 }
