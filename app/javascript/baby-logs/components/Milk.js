@@ -11,7 +11,7 @@ export const Milk = ({ state, actions }) => (
       <CurrentTime/>
     </label>
     <label className="milk__field">
-      <span>時間(分)</span>
+      <span>時間</span>
       <TimeSelect/>
     </label>
     <label className="milk__field">

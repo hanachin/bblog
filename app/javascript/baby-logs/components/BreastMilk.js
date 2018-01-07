@@ -10,7 +10,7 @@ export const BreastMilk = ({ state, actions }) => (
       <CurrentTime/>
     </label>
     <label className="breast-milk__field">
-      <span>時間(分)</span>
+      <span>時間</span>
       <TimeSelect/>
     </label>
     <input className="breast-milk__submit" type="submit"/>
