@@ -1,4 +1,4 @@
-import "../styles/main";
+import "../styles/Main";
 import { h } from "hyperapp";
 import { BreastMilk } from "./BreastMilk";
 import { Milk } from "./Milk";

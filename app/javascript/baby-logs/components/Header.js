@@ -1,4 +1,4 @@
-import "../styles/header";
+import "../styles/Header";
 import { h } from "hyperapp";
 import { logTypes } from "../logTypes";
 
