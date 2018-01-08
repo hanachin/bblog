@@ -4,15 +4,6 @@
   display: flex;
   margin-top: 10px;
 
-  &__little,
-  &__much {
-    flex: auto;
-    text-align: center;
-    border-style: solid;
-    border-color: $border-light;
-    background-color: $bg-light;
-  }
-
   &__little {
     border-width: 5px 0 5px 5px;
     border-radius: 5px 0 0 5px;
@@ -21,5 +12,29 @@
   &__much {
     border-width: 5px 5px 5px 1px;
     border-radius: 0 5px 5px 0;
+  }
+
+  &__little,
+  &__much {
+    appearance: none;
+    flex: auto;
+    margin: 0;
+    text-align: center;
+    border-style: solid;
+    border-color: $border-light;
+    background-color: $bg-light;
+
+    &::after {
+      content: attr(data-diaper-usage-content);
+    }
+
+    &:checked {
+      border: 5px solid $border-dark;
+      background-color: $border-light;
+
+      &::after {
+        content: "✔️" attr(data-diaper-usage-content);
+      }
+    }
   }
 }

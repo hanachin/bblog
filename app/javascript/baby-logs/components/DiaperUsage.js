@@ -1,9 +1,21 @@
 import "../styles/DiaperUsage";
 import { h } from "hyperapp";
 
-export const DiaperUsage = ({ unit }) => (
+export const DiaperUsage = ({ name, unit }) => (
   <div className="diaper-usage">
-    <div className="diaper-usage__little">{unit}</div>
-    <div className="diaper-usage__much">{unit}{unit}{unit}</div>
+    <input
+      name={name}
+      type="radio"
+      value="little"
+      data-diaper-usage-content={unit}
+      className={`diaper-usage__little diaper-usage__little--${name}`}
+    />
+    <input
+      name={name}
+      type="radio"
+      value="much"
+      data-diaper-usage-content={unit + unit + unit}
+      className={`diaper-usage__much diaper-usage__much--${name}`}
+    />
   </div>
 )
