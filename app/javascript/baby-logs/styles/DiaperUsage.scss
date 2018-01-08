@@ -24,6 +24,7 @@
     border-style: solid;
     border-color: $border-light;
     background-color: $bg-light;
+    height: 1.5em;
 
     &::after {
       content: attr(data-diaper-usage-content);

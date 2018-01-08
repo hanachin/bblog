@@ -12,6 +12,7 @@
     text-align: center;
     border-radius: 0;
     border-width: 0;
+    height: 1.5em;
 
     &::after {
       content: attr(value);
