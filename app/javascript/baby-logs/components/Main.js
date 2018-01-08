@@ -1,12 +1,14 @@
 import { h } from "hyperapp";
-import { BreastMilk } from "./BreastMilk";
-import { Milk } from "./Milk";
-import { Poo } from "./Poo";
-import { Pee } from "./Pee";
 import { Bath } from "./Bath";
+import { BreastMilk } from "./BreastMilk";
+import { Logs } from "./Logs";
+import { Milk } from "./Milk";
+import { Pee } from "./Pee";
+import { Poo } from "./Poo";
 
 export const Main = ({ state, actions }) => (
   <main>
+    {state.logType === '👶' && <Logs state={state} actions={actions} />}
     {state.logType === '🤱' && <BreastMilk state={state} actions={actions} />}
     {state.logType === '🍼' && <Milk state={state} actions={actions} />}
     {state.logType === '💩' && <Poo state={state} actions={actions} />}
