@@ -1,0 +1,51 @@
+@import "variables";
+
+%breasts__both {
+  appearance: none;
+  flex: auto;
+  margin: 0;
+  font-size: 2em;
+  text-align: center;
+  border-style: solid;
+  border-color: $border-light;
+  background-color: $bg-light;
+
+  &:checked {
+    border: 5px solid $border-dark;
+    background-color: $border-light;
+  }
+}
+
+.breasts {
+  display: flex;
+
+  &__left {
+    @extend %breasts__both;
+
+    border-width: 5px 0 5px 5px;
+    border-radius: 5px 0 0 5px;
+
+    &::before {
+      content: "左🤱";
+    }
+
+    &:checked::before {
+      content: "✔️左🤱";
+    }
+  }
+
+  &__right {
+    @extend %breasts__both;
+
+    border-width: 5px 5px 5px 1px;
+    border-radius: 0 5px 5px 0;
+
+    &::before {
+      content: "🤱右";
+    }
+
+    &:checked::before {
+      content: "🤱右✔️";
+    }
+  }
+}
