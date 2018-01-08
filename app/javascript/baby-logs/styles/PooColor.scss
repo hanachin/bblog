@@ -4,10 +4,24 @@
   display: flex;
   margin-top: 10px;
 
-  > div {
+  input[name="poo-color"] {
+    appearance: none;
     flex: auto;
+    margin: 0;
     font-size: 2em;
     text-align: center;
+
+    &::after {
+      content: attr(value);
+    }
+
+    &:checked {
+      margin-top: -10px;
+
+      &::before {
+        content: "✔️";
+      }
+    }
 
     &:first-child {
       border-radius: 10px 0 0 10px;
