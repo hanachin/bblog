@@ -13,3 +13,9 @@ ja:
       breast_milk_log:
         left_side: 左
         right_side: 右
+      pee_log:
+        diaper_little: 💧
+        diaper_much: 💧💧💧
+      poo_log:
+        diaper_little: 💩
+        diaper_much: 💩💩💩
