@@ -1,0 +1,2 @@
+class BathLog < ApplicationRecord
+end

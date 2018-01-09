@@ -1,0 +1,2 @@
+class PooLog < ApplicationRecord
+end

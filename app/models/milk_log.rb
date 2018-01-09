@@ -1,0 +1,2 @@
+class MilkLog < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class PeeLog < ApplicationRecord
+end

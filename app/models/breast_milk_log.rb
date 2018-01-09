@@ -1,0 +1,2 @@
+class BreastMilkLog < ApplicationRecord
+end
