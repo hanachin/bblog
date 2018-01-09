@@ -9,3 +9,7 @@ ja:
       milk_log: 🍼
       pee_log: 💧
       poo_log: 💩
+    attributes:
+      breast_milk_log:
+        left_side: 左
+        right_side: 右
