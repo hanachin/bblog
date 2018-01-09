@@ -16,6 +16,9 @@ ja:
         duration_min: 分
         left_side: 左
         right_side: 右
+      milk_log:
+        duration_min: 分
+        milk_volume_ml: ml
       pee_log:
         diaper_little: 💧
         diaper_much: 💧💧💧
