@@ -10,6 +10,8 @@ ja:
       pee_log: 💧
       poo_log: 💩
     attributes:
+      bath_log:
+        duration_min: 分
       breast_milk_log:
         left_side: 左
         right_side: 右
