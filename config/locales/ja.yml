@@ -1,0 +1,11 @@
+ja:
+  activemodel:
+    models:
+      baby_log: 👶
+  activerecord:
+    models:
+      bath_log: 🛀
+      breast_milk_log: 🤱
+      milk_log: 🍼
+      pee_log: 💧
+      poo_log: 💩
