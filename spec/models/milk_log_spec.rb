@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MilkLog, type: :model do
   it_behaves_like 'have .model_name.human', '🍼'
+  it_behaves_like 'have duration_min'
 
   describe '.baby_logs_sql' do
     before do
