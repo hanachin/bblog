@@ -1,4 +1,6 @@
 class BathLog < ApplicationRecord
+  validates :duration_min, :started_at, presence: true
+
   class << self
     def baby_logs_sql
       <<~SQL

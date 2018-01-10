@@ -12,6 +12,7 @@ ja:
     attributes:
       bath_log:
         duration_min: 分
+        started_at: 開始時刻
       breast_milk_log:
         duration_min: 分
         left_side: 左
