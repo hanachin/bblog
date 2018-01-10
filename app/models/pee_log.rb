@@ -1,5 +1,6 @@
 class PeeLog < ApplicationRecord
   include DiaperUsage
+  include StartedAt
 
   class << self
     def baby_logs_sql

@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe BathLog, type: :model do
   it_behaves_like 'have .model_name.human', '🛀'
   it_behaves_like 'have duration_min'
-
-  it { is_expected.to validate_presence_of(:started_at).with_message('を入力してください') }
+  it_behaves_like 'have started_at'
 
   describe '.baby_logs_sql' do
     before do

@@ -1,5 +1,6 @@
 class MilkLog < ApplicationRecord
   include DurationMin
+  include StartedAt
 
   class << self
     def baby_logs_sql

@@ -1,5 +1,6 @@
 class PooLog < ApplicationRecord
   include DiaperUsage
+  include StartedAt
 
   enum color: %i(no_input one two three four five six seven), _prefix: :color
 

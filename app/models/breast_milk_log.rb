@@ -1,5 +1,6 @@
 class BreastMilkLog < ApplicationRecord
   include DurationMin
+  include StartedAt
 
   enum side: %i(no_input left right), _suffix: :side
 

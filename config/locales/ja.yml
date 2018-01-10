@@ -17,12 +17,16 @@ ja:
         duration_min: 分
         left_side: 左
         right_side: 右
+        started_at: 開始時刻
       milk_log:
         duration_min: 分
         milk_volume_ml: ml
+        started_at: 開始時刻
       pee_log:
         diaper_little: 💧
         diaper_much: 💧💧💧
+        started_at: 開始時刻
       poo_log:
         diaper_little: 💩
         diaper_much: 💩💩💩
+        started_at: 開始時刻
