@@ -1,4 +1,4 @@
-module DurationMin
+module HaveDurationMin
   extend ActiveSupport::Concern
 
   included do

@@ -1,4 +1,4 @@
-module StartedAt
+module HaveStartedAt
   extend ActiveSupport::Concern
 
   included do
