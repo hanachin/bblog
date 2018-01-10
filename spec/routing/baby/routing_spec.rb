@@ -37,4 +37,10 @@ RSpec.describe '/baby routing', type: :routing do
       expect(post: '/baby/pee_logs').to route_to('pee_logs#create')
     end
   end
+
+  describe 'POST /baby/poo_logs' do
+    specify do
+      expect(post: '/baby/poo_logs').to route_to('poo_logs#create')
+    end
+  end
 end
