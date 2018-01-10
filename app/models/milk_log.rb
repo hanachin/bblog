@@ -2,6 +2,8 @@ class MilkLog < ApplicationRecord
   include HaveDurationMin
   include HaveStartedAt
 
+  validates :milk_volume_ml, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_nil: true }
+
   class << self
     def baby_logs_sql
       <<~SQL
