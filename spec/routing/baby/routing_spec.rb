@@ -13,4 +13,10 @@ RSpec.describe '/baby routing', type: :routing do
       expect(get: '/baby/二〇一八/一月/元旦').not_to be_routable
     end
   end
+
+  describe 'POST /baby/bath_logs' do
+    specify do
+      expect(post: '/baby/bath_logs').to route_to('bath_logs#create')
+    end
+  end
 end
