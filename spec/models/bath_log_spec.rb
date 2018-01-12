@@ -8,7 +8,7 @@ RSpec.describe BathLog, type: :model do
   describe '.baby_logs_sql' do
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      BathLog.create!(duration_min: 1, started_at: started_at)
+      create(:bath_log, duration_min: 1, started_at: started_at)
     end
 
     specify do

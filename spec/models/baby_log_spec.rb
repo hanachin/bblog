@@ -6,11 +6,11 @@ RSpec.describe BabyLog do
   shared_context 'there are some baby logs' do
     before do
       now = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      BathLog.create!(duration_min: 1, started_at: now)
-      BreastMilkLog.create!(duration_min: 2, started_at: 1.hour.since(now))
-      MilkLog.create!(duration_min: 3, milk_volume_ml: 120, started_at: 2.hours.since(now))
-      PeeLog.create!(started_at: 3.hours.since(now))
-      PooLog.create!(started_at: 4.hours.since(now))
+      create(:bath_log, duration_min: 1, started_at: now)
+      create(:breast_milk_log, duration_min: 2, started_at: 1.hour.since(now))
+      create(:milk_log, duration_min: 3, milk_volume_ml: 120, started_at: 2.hours.since(now))
+      create(:pee_log, started_at: 3.hours.since(now))
+      create(:poo_log, started_at: 4.hours.since(now))
     end
   end
 

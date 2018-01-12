@@ -11,7 +11,7 @@ RSpec.describe MilkLog, type: :model do
   describe '.baby_logs_sql' do
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      MilkLog.create!(duration_min: 1, milk_volume_ml: 100, started_at: started_at)
+      create(:milk_log, duration_min: 1, milk_volume_ml: 100, started_at: started_at)
     end
 
     specify do

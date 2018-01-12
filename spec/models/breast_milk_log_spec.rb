@@ -10,7 +10,7 @@ RSpec.describe BreastMilkLog, type: :model do
   describe '.baby_logs_sql' do
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      BreastMilkLog.create!(duration_min: 1, side: :left, started_at: started_at)
+      create(:breast_milk_log, duration_min: 1, side: :left, started_at: started_at)
     end
 
     specify do
@@ -21,9 +21,9 @@ RSpec.describe BreastMilkLog, type: :model do
 
   describe '.side_text_sql' do
     before do
-      BreastMilkLog.create!(duration_min: 1, started_at: Time.current, side: :no_input)
-      BreastMilkLog.create!(duration_min: 1, started_at: Time.current, side: :left)
-      BreastMilkLog.create!(duration_min: 1, started_at: Time.current, side: :right)
+      create(:breast_milk_log, duration_min: 1, started_at: Time.current, side: :no_input)
+      create(:breast_milk_log, duration_min: 1, started_at: Time.current, side: :left)
+      create(:breast_milk_log, duration_min: 1, started_at: Time.current, side: :right)
     end
 
     specify do

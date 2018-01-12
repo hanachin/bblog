@@ -10,7 +10,7 @@ RSpec.describe PooLog, type: :model do
   describe '.baby_logs_sql' do
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      PooLog.create!(diaper_usage: :little, started_at: started_at)
+      create(:poo_log, diaper_usage: :little, started_at: started_at)
     end
 
     specify do
@@ -21,9 +21,9 @@ RSpec.describe PooLog, type: :model do
 
   describe '.diaper_usage_text_sql' do
     before do
-      PooLog.create!(started_at: Time.current, diaper_usage: :no_input)
-      PooLog.create!(started_at: Time.current, diaper_usage: :little)
-      PooLog.create!(started_at: Time.current, diaper_usage: :much)
+      create(:poo_log, started_at: Time.current, diaper_usage: :no_input)
+      create(:poo_log, started_at: Time.current, diaper_usage: :little)
+      create(:poo_log, started_at: Time.current, diaper_usage: :much)
     end
 
     specify do

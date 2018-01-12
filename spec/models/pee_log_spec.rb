@@ -8,7 +8,7 @@ RSpec.describe PeeLog, type: :model do
   describe '.baby_logs_sql' do
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      PeeLog.create!(diaper_usage: :much, started_at: started_at)
+      create(:pee_log, diaper_usage: :much, started_at: started_at)
     end
 
     specify do
@@ -19,9 +19,9 @@ RSpec.describe PeeLog, type: :model do
 
   describe '.diaper_usage_text_sql' do
     before do
-      PeeLog.create!(started_at: Time.current, diaper_usage: :no_input)
-      PeeLog.create!(started_at: Time.current, diaper_usage: :little)
-      PeeLog.create!(started_at: Time.current, diaper_usage: :much)
+      create(:pee_log, started_at: Time.current, diaper_usage: :no_input)
+      create(:pee_log, started_at: Time.current, diaper_usage: :little)
+      create(:pee_log, started_at: Time.current, diaper_usage: :much)
     end
 
     specify do
