@@ -15,42 +15,61 @@ ActiveRecord::Schema.define(version: 20180108142328) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "babies", force: :cascade do |t|
+    t.string "email", null: false
+  end
+
   create_table "bath_logs", force: :cascade do |t|
+    t.bigint "baby_id", null: false
     t.integer "duration_min", null: false
     t.datetime "started_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_bath_logs_on_baby_id"
   end
 
   create_table "breast_milk_logs", force: :cascade do |t|
+    t.bigint "baby_id", null: false
     t.integer "duration_min", null: false
     t.integer "side", default: 0, null: false
     t.datetime "started_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_breast_milk_logs_on_baby_id"
   end
 
   create_table "milk_logs", force: :cascade do |t|
+    t.bigint "baby_id", null: false
     t.integer "duration_min", null: false
     t.integer "milk_volume_ml", null: false
     t.datetime "started_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_milk_logs_on_baby_id"
   end
 
   create_table "pee_logs", force: :cascade do |t|
+    t.bigint "baby_id", null: false
     t.integer "diaper_usage", default: 0, null: false
     t.datetime "started_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_pee_logs_on_baby_id"
   end
 
   create_table "poo_logs", force: :cascade do |t|
+    t.bigint "baby_id", null: false
     t.integer "color", default: 0, null: false
     t.integer "diaper_usage", default: 0, null: false
     t.datetime "started_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_poo_logs_on_baby_id"
   end
 
+  add_foreign_key "bath_logs", "babies"
+  add_foreign_key "breast_milk_logs", "babies"
+  add_foreign_key "milk_logs", "babies"
+  add_foreign_key "pee_logs", "babies"
+  add_foreign_key "poo_logs", "babies"
 end

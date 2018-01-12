@@ -2,6 +2,8 @@ class PeeLog < ApplicationRecord
   include HaveDiaperUsage
   include HaveStartedAt
 
+  belongs_to :baby
+
   class << self
     def baby_logs_sql
       <<~SQL

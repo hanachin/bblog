@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /baby/breast_milk_logs', type: :request do
+RSpec.describe 'POST /baby/breast_milk_logs', :pending, type: :request do
   it 'returns 201 for valid params' do
     started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
     params = { duration_min: 1, side: :left, started_at: started_at }

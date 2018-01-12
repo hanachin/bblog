@@ -2,6 +2,8 @@ class BathLog < ApplicationRecord
   include HaveDurationMin
   include HaveStartedAt
 
+  belongs_to :baby
+
   class << self
     def baby_logs_sql
       <<~SQL

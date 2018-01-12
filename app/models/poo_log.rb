@@ -2,6 +2,8 @@ class PooLog < ApplicationRecord
   include HaveDiaperUsage
   include HaveStartedAt
 
+  belongs_to :baby
+
   enum color: %i(no_input one two three four five six seven), _prefix: :color
 
   class << self
