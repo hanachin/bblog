@@ -1,22 +1,22 @@
-import "../styles/BreastMilk";
+import "styles/components/BreastMilk";
 import { h } from "hyperapp";
-import { Breasts } from "./Breasts";
-import { CurrentTime } from "./CurrentTime";
-import { TimeSelect } from "./TimeSelect";
+import { Breasts } from "components/Breasts";
+import { CurrentTime } from "components/CurrentTime";
+import { TimeSelect } from "components/TimeSelect";
 
 export const BreastMilk = ({ state, actions }) => (
   <form className="breast-milk">
     <label className="breast-milk__field">
-      <Breasts/>
+      <Breasts />
     </label>
     <label className="breast-milk__field">
       <span>開始時刻</span>
-      <CurrentTime/>
+      <CurrentTime />
     </label>
     <label className="breast-milk__field">
       <span>時間</span>
-      <TimeSelect/>
+      <TimeSelect />
     </label>
-    <input className="breast-milk__submit" type="submit" value="🤱記録"/>
+    <input className="breast-milk__submit" type="submit" value="🤱記録" />
   </form>
-)
+);

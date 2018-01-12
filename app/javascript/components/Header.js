@@ -1,21 +1,21 @@
-import "../styles/Header";
+import "styles/components/Header";
 import { h } from "hyperapp";
-import { logTypes } from "../logTypes";
+import { LogTypes } from "constants/LogTypes";
 
 export const Header = ({ state, actions }) => (
   <header>
     <nav>
       <ul className="log-types">
-        {logTypes.map(t => (
+        {LogTypes.map(t => (
           <li
             className={`log-types__log-type ${t == state.logType &&
-            "log-types__log-type--current"}`}
+              "log-types__log-type--current"}`}
             onclick={() => actions.changeLogType(t)}
-            >
+          >
             <span>{t}</span>
           </li>
         ))}
-  </ul>
+      </ul>
     </nav>
-    </header>
-)
+  </header>
+);

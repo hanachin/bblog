@@ -1,4 +1,4 @@
-import "../styles/DiaperUsage";
+import "styles/components/DiaperUsage";
 import { h } from "hyperapp";
 
 export const DiaperUsage = ({ name, unit }) => (
@@ -18,4 +18,4 @@ export const DiaperUsage = ({ name, unit }) => (
       className={`diaper-usage__much diaper-usage__much--${name}`}
     />
   </div>
-)
+);

@@ -1,14 +1,9 @@
-import "../styles/Breasts";
+import "styles/components/Breasts";
 import { h } from "hyperapp";
 
 export const Breasts = ({ name, unit }) => (
   <div className="breasts">
-    <input
-      name="breasts"
-      type="radio"
-      value="left"
-      className="breasts__left"
-    />
+    <input name="breasts" type="radio" value="left" className="breasts__left" />
     <input
       name="breasts"
       type="radio"
@@ -16,4 +11,4 @@ export const Breasts = ({ name, unit }) => (
       className="breasts__right"
     />
   </div>
-)
+);
