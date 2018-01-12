@@ -47,3 +47,4 @@ gem 'shoulda-matchers', '~> 3.1', group: 'test'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails-i18n', '~> 5.0.0'
+gem 'factory_bot_rails', group: 'test'
