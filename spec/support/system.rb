@@ -1,6 +1,8 @@
 Capybara.register_driver :chrome_remote do |app|
   caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions:  { mobileEmulation: { deviceName: "Nexus 5X" } })
-  Capybara::Selenium::Driver.new(app, browser: :remote, desired_capabilities: caps, url: 'http://chrome:4444/wd/hub')
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.read_timeout = 10
+  Capybara::Selenium::Driver.new(app, browser: :remote, desired_capabilities: caps, http_client: client, url: 'http://chrome:4444/wd/hub')
 end
 Capybara.default_driver = :chrome_remote
 Capybara.server_port = 3005
