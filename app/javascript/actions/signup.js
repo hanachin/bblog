@@ -1,4 +1,1 @@
-export const signup = email => state => {
-  // TODO send signup request
-  return { ...state, done: true };
-};
+export const signup = email => state => ({ ...state, done: true });

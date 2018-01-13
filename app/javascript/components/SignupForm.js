@@ -1,15 +1,19 @@
 import "styles/components/SignupForm";
 import { h } from "hyperapp";
+import { sendVerificationEmail } from "requests/sendVerificationEmail";
 
 export const SignupForm = ({
-  state: { valid },
+  state: { email, valid },
   actions: { signup, updateForm }
 }) => (
   <form
     className="signup-form"
     onsubmit={e => {
       e.preventDefault();
-      signup();
+      sendVerificationEmail(email).then(
+        () => signup(),
+        reason => alert(`エラーが発生しました ${reason}`)
+      );
     }}
   >
     <label className="signup-form__field">
