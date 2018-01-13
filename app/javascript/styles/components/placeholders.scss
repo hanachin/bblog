@@ -11,6 +11,10 @@
     border: 5px solid $border-dark;
     background-color: $border-light;
   }
+
+  &:invalid {
+    border: 5px solid $border-warn;
+  }
 }
 
 %baby-logs-form {
@@ -22,7 +26,7 @@
     margin-bottom: 10px;
   }
 
-  &__submit {
+  &__button {
     appearance: none;
     font-size: 2em;
     position: relative;
@@ -33,5 +37,9 @@
     border: 5px solid $border-light;
     border-radius: 5px;
     background-color: $bg-light;
+  }
+
+  &__submit {
+    @extend %baby-logs-form__button;
   }
 }
