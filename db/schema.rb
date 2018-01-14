@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180113134551) do
 
   create_table "babies", force: :cascade do |t|
     t.string "email", null: false
+    t.index ["email"], name: "index_babies_on_email", unique: true
   end
 
   create_table "bath_logs", force: :cascade do |t|

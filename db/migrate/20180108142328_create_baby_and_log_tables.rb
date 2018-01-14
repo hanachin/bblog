@@ -1,7 +1,7 @@
 class CreateBabyAndLogTables < ActiveRecord::Migration[5.1]
   def change
     create_table :babies do |t|
-      t.string :email, null: false
+      t.string :email, null: false, index: { unique: true }
     end
 
     create_table :bath_logs do |t|
