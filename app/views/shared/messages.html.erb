@@ -1,0 +1,15 @@
+<style>
+  .message > .message.message--alert {
+    color: red;
+  }
+</style>
+
+<%= link_to root_path do %>
+  <h1>bblog</h1>
+<% end %>
+
+<ul class="message">
+  <% @messages.each do |type, message| %>
+    <li class="message message--<%= type %>"><%= message %></li>
+  <% end %>
+</ul>

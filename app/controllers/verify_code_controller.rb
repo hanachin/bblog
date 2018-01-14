@@ -12,6 +12,9 @@ class VerifyCodeController < ApplicationController
       expire_verification_code
     end
     redirect_to today_baby_logs_path
+  rescue ActiveRecord::RecordInvalid => e
+    @messages = { alert: e.record.errors.full_messages }
+    render 'shared/messages', status: :not_found
   end
 
   private

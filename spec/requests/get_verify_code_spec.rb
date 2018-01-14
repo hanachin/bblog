@@ -17,4 +17,14 @@ RSpec.describe 'GET /verify/:code', type: :request do
       expect { get verify_code_path(code: verification_code.code) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
+
+  context "Can't create baby with same email address twice" do
+    before { create(:baby, email: verification_code.email) }
+
+    it 'raise ActiveRecord::RecordNotFound' do
+      get verify_code_path(code: verification_code.code)
+      expect(response.status).to eq(404)
+      expect(response.body).to include('メールアドレスは既に登録されています')
+    end
+  end
 end

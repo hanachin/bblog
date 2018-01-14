@@ -10,6 +10,8 @@ ja:
       pee_log: 💧
       poo_log: 💩
     attributes:
+      baby:
+        email: メールアドレス
       bath_log:
         duration_min: 分
         started_at: 開始時刻
