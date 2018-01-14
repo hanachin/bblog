@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'babies#new'
 
+  get 'verify/:code', to: 'verify_code#verify', as: :verify_code
+
   post 'verification_emails', to: 'verification_emails#create'
 
   constraints(year: /\d{4}/, month: /\d{1,2}/, mday: /\d{1,2}/) do
