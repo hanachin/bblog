@@ -12,6 +12,9 @@ class VerifyCodeController < ApplicationController
       expire_verification_code
     end
     redirect_to today_baby_logs_path
+  rescue ActiveRecord::RecordNotFound => e
+    @messages = { alert: '確認メールの有効期限が切れているか既に登録されているため登録を完了できませんでした。再度登録をお願いします。' }
+    render 'shared/messages', status: :not_found
   rescue ActiveRecord::RecordInvalid => e
     @messages = { alert: e.record.errors.full_messages }
     render 'shared/messages', status: :not_found

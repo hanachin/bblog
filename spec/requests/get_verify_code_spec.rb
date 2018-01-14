@@ -14,7 +14,9 @@ RSpec.describe 'GET /verify/:code', type: :request do
     before { verification_code.touch }
 
     it 'raise ActiveRecord::RecordNotFound' do
-      expect { get verify_code_path(code: verification_code.code) }.to raise_error(ActiveRecord::RecordNotFound)
+      get verify_code_path(code: verification_code.code)
+      expect(response.status).to eq(404)
+      expect(response.body).to include('確認メールの有効期限が切れているか既に登録されているため登録を完了できませんでした。再度登録をお願いします。')
     end
   end
 
