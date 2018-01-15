@@ -4,6 +4,8 @@ class VerifyCodeController < ApplicationController
     alias expire touch
   end
 
+  include BabySigninable
+  include TodayBabyLogsPath
 
   def verify
     ApplicationRecord.transaction do
@@ -38,14 +40,5 @@ class VerifyCodeController < ApplicationController
 
   def fetch_verification_code
     VerificationCode.not_expired.find_by!(code: code)
-  end
-
-  def signin(baby)
-    session[:baby_id] = baby.id
-  end
-
-  def today_baby_logs_path
-    date = Date.current
-    baby_logs_path(year: date.year, month: date.month, mday: date.mday)
   end
 end

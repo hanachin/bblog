@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'babies#new'
 
+  get 'signin/:code', to: 'signin#signin', as: :signin
   get 'verify/:code', to: 'verify_code#verify', as: :verify_code
 
   post 'signin_emails', to: 'signin_emails#create'
