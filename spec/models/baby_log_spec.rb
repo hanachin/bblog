@@ -20,9 +20,16 @@ RSpec.describe BabyLog do
     include_context 'there are some baby logs'
 
     specify do
-      result = ApplicationRecord.connection.exec_query("select * from (#{BabyLog.baby_logs_sql}) as t order by t.started_at desc").to_a
-      actual = result.map { |r| r['text'] }
-      expect(actual).to eq(["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分"])
+      aggregate_failures do
+        condition = "baby_id = #{baby_id}"
+        result = ApplicationRecord.connection.exec_query("select * from (#{BabyLog.baby_logs_sql(condition)}) as t order by t.started_at desc").to_a
+        actual = result.map { |r| r['text'] }
+        expect(actual).to eq(["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分"])
+
+        condition = "baby_id <> #{baby_id}"
+        result = ApplicationRecord.connection.exec_query("select * from (#{BabyLog.baby_logs_sql(condition)}) as t order by t.started_at desc").to_a
+        expect(result.size).to eq(0)
+      end
     end
   end
 
@@ -30,17 +37,14 @@ RSpec.describe BabyLog do
     include_context 'there are some baby logs'
 
     specify do
-      expected = {
-        "2017-01-02" => [
-          "💩 07:04",
-          "💧 06:04",
-          "🍼 05:04 3分 120ml",
-          "🤱 04:04 2分",
-          "🛀 03:04 1分"
-        ]
-      }
-      actual = JSON.parse(BabyLog.to_json)
-      expect(actual).to eq(expected)
+      aggregate_failures do
+        condition = "baby_id = #{baby_id}"
+        actual = JSON.parse(BabyLog.to_json(condition))
+        expect(actual).to eq({ "2017-01-02" => ["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分"] })
+
+        condition = "baby_id <> #{baby_id}"
+        expect(BabyLog.to_json(condition)).to eq({})
+      end
     end
   end
 end

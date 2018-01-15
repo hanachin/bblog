@@ -19,7 +19,7 @@ class BreastMilkLog < ApplicationRecord
       SQL
     end
 
-    def baby_logs_sql
+    def baby_logs_sql(condition)
       <<~SQL
       (
         select
@@ -28,6 +28,7 @@ class BreastMilkLog < ApplicationRecord
           (#{table_name}.started_at at time zone 'UTC' at time zone '#{Time.zone.name}') as started_at,
           (coalesce(((#{side_text_sql}) || ' '), '') || #{table_name}.duration_min || '#{human_attribute_name(:duration_min)}') as text
         from #{table_name}
+        where #{condition}
       )
       SQL
     end

@@ -12,11 +12,12 @@ RSpec.describe PooLog, type: :model do
 
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
+      create(:poo_log, diaper_usage: :little, started_at: started_at)
       create(:poo_log, baby_id: baby_id, diaper_usage: :little, started_at: started_at)
     end
 
     specify do
-      actual = ApplicationRecord.connection.exec_query(PooLog.baby_logs_sql).to_a
+      actual = ApplicationRecord.connection.exec_query(PooLog.baby_logs_sql("baby_id = #{baby_id}")).to_a
       expect(actual).to eq([{ "baby_id" => baby_id, "type" => "💩", "started_at" => "2017-01-02 03:04:05", "text" => "💩" }])
     end
   end

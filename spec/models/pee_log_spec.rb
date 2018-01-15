@@ -10,11 +10,12 @@ RSpec.describe PeeLog, type: :model do
 
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
+      create(:pee_log, diaper_usage: :much, started_at: started_at)
       create(:pee_log, baby_id: baby_id, diaper_usage: :much, started_at: started_at)
     end
 
     specify do
-      actual = ApplicationRecord.connection.exec_query(PeeLog.baby_logs_sql).to_a
+      actual = ApplicationRecord.connection.exec_query(PeeLog.baby_logs_sql("baby_id = #{baby_id}")).to_a
       expect(actual).to eq([{ "baby_id" => baby_id, "type" => "💧", "started_at" => "2017-01-02 03:04:05", "text" => "💧💧💧" }])
     end
   end

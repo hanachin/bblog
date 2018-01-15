@@ -5,7 +5,7 @@ class PeeLog < ApplicationRecord
   belongs_to :baby
 
   class << self
-    def baby_logs_sql
+    def baby_logs_sql(condition)
       <<~SQL
       (
         select
@@ -14,6 +14,7 @@ class PeeLog < ApplicationRecord
           (#{table_name}.started_at at time zone 'UTC' at time zone '#{Time.zone.name}') as started_at,
           (#{diaper_usage_text_sql}) as text
         from #{table_name}
+        where #{condition}
       )
     SQL
     end
