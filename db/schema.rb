@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113134551) do
+ActiveRecord::Schema.define(version: 20180115133837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 20180113134551) do
     t.index ["baby_id"], name: "index_poo_logs_on_baby_id"
   end
 
+  create_table "signin_codes", force: :cascade do |t|
+    t.bigint "baby_id", null: false
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_signin_codes_on_baby_id"
+    t.index ["code"], name: "index_signin_codes_on_code", unique: true
+  end
+
   create_table "verification_codes", force: :cascade do |t|
     t.string "code", null: false
     t.string "email", null: false
@@ -83,4 +92,5 @@ ActiveRecord::Schema.define(version: 20180113134551) do
   add_foreign_key "milk_logs", "babies"
   add_foreign_key "pee_logs", "babies"
   add_foreign_key "poo_logs", "babies"
+  add_foreign_key "signin_codes", "babies"
 end
