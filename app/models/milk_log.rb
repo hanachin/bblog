@@ -11,6 +11,7 @@ class MilkLog < ApplicationRecord
       <<~SQL
       (
         select
+          baby_id,
           '#{model_name.human}' as type,
           (#{table_name}.started_at at time zone 'UTC' at time zone '#{Time.zone.name}') as started_at,
           (#{table_name}.duration_min || '#{human_attribute_name(:duration_min)}' || ' ' || #{table_name}.milk_volume_ml || '#{human_attribute_name(:milk_volume_ml)}') as text

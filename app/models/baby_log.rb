@@ -7,7 +7,9 @@ class BabyLog
       <<~SQL
       (
         select
-          (baby_logs.type || ' ' || to_char(baby_logs.started_at, 'HH24:MI') || coalesce((' ' || baby_logs.text), '')) as text, baby_logs.started_at
+          baby_id,
+          (baby_logs.type || ' ' || to_char(baby_logs.started_at, 'HH24:MI') || coalesce((' ' || baby_logs.text), '')) as text,
+          baby_logs.started_at
         from (
           (#{BathLog.baby_logs_sql})
           union (#{BreastMilkLog.baby_logs_sql})

@@ -9,6 +9,7 @@ class PeeLog < ApplicationRecord
       <<~SQL
       (
         select
+          baby_id,
           '#{model_name.human}' as type,
           (#{table_name}.started_at at time zone 'UTC' at time zone '#{Time.zone.name}') as started_at,
           (#{diaper_usage_text_sql}) as text

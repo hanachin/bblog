@@ -8,14 +8,16 @@ RSpec.describe PooLog, type: :model do
   it { is_expected.to define_enum_for(:color).with(%i(no_input one two three four five six seven)) }
 
   describe '.baby_logs_sql' do
+    let(:baby_id) { create(:baby).id }
+
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      create(:poo_log, diaper_usage: :little, started_at: started_at)
+      create(:poo_log, baby_id: baby_id, diaper_usage: :little, started_at: started_at)
     end
 
     specify do
       actual = ApplicationRecord.connection.exec_query(PooLog.baby_logs_sql).to_a
-      expect(actual).to eq([{ "type" => "💩", "started_at" => "2017-01-02 03:04:05", "text" => "💩" }])
+      expect(actual).to eq([{ "baby_id" => baby_id, "type" => "💩", "started_at" => "2017-01-02 03:04:05", "text" => "💩" }])
     end
   end
 

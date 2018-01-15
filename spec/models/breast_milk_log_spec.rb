@@ -8,14 +8,16 @@ RSpec.describe BreastMilkLog, type: :model do
   it { is_expected.to define_enum_for(:side).with(%i(no_input left right)) }
 
   describe '.baby_logs_sql' do
+    let(:baby_id) { create(:baby).id }
+
     before do
       started_at = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      create(:breast_milk_log, duration_min: 1, side: :left, started_at: started_at)
+      create(:breast_milk_log, baby_id: baby_id, duration_min: 1, side: :left, started_at: started_at)
     end
 
     specify do
       actual = ApplicationRecord.connection.exec_query(BreastMilkLog.baby_logs_sql).to_a
-      expect(actual).to eq([{ "type" => "🤱", "started_at" => "2017-01-02 03:04:05", "text" => "左 1分" }])
+      expect(actual).to eq([{ "baby_id" => baby_id, "type" => "🤱", "started_at" => "2017-01-02 03:04:05", "text" => "左 1分" }])
     end
   end
 

@@ -4,13 +4,15 @@ RSpec.describe BabyLog do
   it_behaves_like 'have .model_name.human', '👶'
 
   shared_context 'there are some baby logs' do
+    let(:baby_id) { create(:baby).id }
+
     before do
       now = Time.zone.local(2017, 1, 2, 3, 4, 5)
-      create(:bath_log, duration_min: 1, started_at: now)
-      create(:breast_milk_log, duration_min: 2, started_at: 1.hour.since(now))
-      create(:milk_log, duration_min: 3, milk_volume_ml: 120, started_at: 2.hours.since(now))
-      create(:pee_log, started_at: 3.hours.since(now))
-      create(:poo_log, started_at: 4.hours.since(now))
+      create(:bath_log, baby_id: baby_id, duration_min: 1, started_at: now)
+      create(:breast_milk_log, baby_id: baby_id, duration_min: 2, started_at: 1.hour.since(now))
+      create(:milk_log, baby_id: baby_id, duration_min: 3, milk_volume_ml: 120, started_at: 2.hours.since(now))
+      create(:pee_log, baby_id: baby_id, started_at: 3.hours.since(now))
+      create(:poo_log, baby_id: baby_id, started_at: 4.hours.since(now))
     end
   end
 
