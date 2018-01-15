@@ -23,10 +23,12 @@ class BabyLog
 
     def to_json(condition)
       ApplicationRecord.connection.select_value(<<~SQL) || {}
-      select
-        json_build_object(started_at::date, array_to_json(array_agg(text ORDER BY started_at desc)))
-      from #{baby_logs_sql(condition)} as baby_logs
-      group by started_at::date;
+      select json_object_agg(k, v)
+      from (
+        select started_at::date as k, json_agg(text ORDER BY started_at desc) as v
+        from #{baby_logs_sql(condition)} as baby_logs
+        group by started_at::date
+      ) as j
       SQL
     end
   end

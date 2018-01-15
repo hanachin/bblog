@@ -13,6 +13,7 @@ RSpec.describe BabyLog do
       create(:milk_log, baby_id: baby_id, duration_min: 3, milk_volume_ml: 120, started_at: 2.hours.since(now))
       create(:pee_log, baby_id: baby_id, started_at: 3.hours.since(now))
       create(:poo_log, baby_id: baby_id, started_at: 4.hours.since(now))
+      create(:poo_log, baby_id: baby_id, started_at: 5.hours.since(now).yesterday)
     end
   end
 
@@ -24,7 +25,7 @@ RSpec.describe BabyLog do
         condition = "baby_id = #{baby_id}"
         result = ApplicationRecord.connection.exec_query("select * from (#{BabyLog.baby_logs_sql(condition)}) as t order by t.started_at desc").to_a
         actual = result.map { |r| r['text'] }
-        expect(actual).to eq(["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分"])
+        expect(actual).to eq(["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分", "💩 08:04"])
 
         condition = "baby_id <> #{baby_id}"
         result = ApplicationRecord.connection.exec_query("select * from (#{BabyLog.baby_logs_sql(condition)}) as t order by t.started_at desc").to_a
@@ -40,7 +41,7 @@ RSpec.describe BabyLog do
       aggregate_failures do
         condition = "baby_id = #{baby_id}"
         actual = JSON.parse(BabyLog.to_json(condition))
-        expect(actual).to eq({ "2017-01-02" => ["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分"] })
+        expect(actual).to eq({ "2017-01-01" => ["💩 08:04"] , "2017-01-02" => ["💩 07:04", "💧 06:04", "🍼 05:04 3分 120ml", "🤱 04:04 2分", "🛀 03:04 1分"] })
 
         condition = "baby_id <> #{baby_id}"
         expect(BabyLog.to_json(condition)).to eq({})
