@@ -2,9 +2,7 @@ require 'securerandom'
 
 class VerificationEmailsController < ApplicationController
   class VerificationCode < ::VerificationCode
-    before_validation do
-      self.code = SecureRandom.uuid
-    end
+    include AssignCodeBeforeValidation
   end
 
   def create

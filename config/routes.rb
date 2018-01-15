@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'verify/:code', to: 'verify_code#verify', as: :verify_code
 
+  post 'signin_emails', to: 'signin_emails#create'
   post 'verification_emails', to: 'verification_emails#create'
 
   constraints(year: /\d{4}/, month: /\d{1,2}/, mday: /\d{1,2}/) do
