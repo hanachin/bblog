@@ -3,10 +3,9 @@ import { h } from "hyperapp";
 import { sendSigninEmail } from "requests/sendSigninEmail";
 
 export const SigninForm = ({
-  state,
-  actions: { done, updateForm }
+  state: { email, valid },
+  actions: { done, updateForm, validate, invalidate }
 }) => {
-  const { email, valid } = state;
   return (
   <form
     className="signin-form"
@@ -23,13 +22,10 @@ export const SigninForm = ({
       <input
         name="email"
         type="email"
-        onchange={e =>
-          updateForm({
-            name: e.target.name,
-            value: e.target.value,
-            valid: e.target.validity.valid
-          })
-        }
+        onchange={e => {
+          updateForm({ name: e.target.name, value: e.target.value });
+          e.target.validity.valid ? validate() : invalidate();
+        }}
         required
       />
     </label>

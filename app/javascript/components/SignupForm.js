@@ -4,7 +4,7 @@ import { sendVerificationEmail } from "requests/sendVerificationEmail";
 
 export const SignupForm = ({
   state: { email, valid },
-  actions: { done, updateForm }
+  actions: { done, updateForm, validate, invalidate }
 }) => (
   <form
     className="signup-form"
@@ -21,13 +21,10 @@ export const SignupForm = ({
       <input
         name="email"
         type="email"
-        onchange={e =>
-          updateForm({
-            name: e.target.name,
-            value: e.target.value,
-            valid: e.target.validity.valid
-          })
-        }
+        onchange={e => {
+          updateForm({ name: e.target.name, value: e.target.value });
+          e.target.validity.valid ? validate() : invalidate();
+        }}
         required
       />
     </label>

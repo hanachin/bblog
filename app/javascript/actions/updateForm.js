@@ -1,5 +1,4 @@
-export const updateForm = ({ name, value, valid }) => state => ({
+export const updateForm = ({ name, value} ) => state => ({
   ...state,
-  valid,
   [name]: value
 });
