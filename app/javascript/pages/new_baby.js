@@ -1,18 +1,36 @@
 import "styles/pages/new_baby";
 import { h } from "hyperapp";
 import { SignupForm } from "components/SignupForm";
+import { SigninForm } from "components/SigninForm";
 import { SignupThanks } from "components/SignupThanks";
-import { signup } from "actions/signup";
+import { SigninThanks } from "components/SigninThanks";
+import { done } from "actions/done";
 import { updateForm } from "actions/updateForm";
-export { signupFormState as state } from "states/signupFormState";
+import { signupFormState } from "states/signupFormState";
+import { signinFormState } from "states/signinFormState";
 import { resetDone } from "actions/resetDone";
 
-export const actions = { signup, updateForm, resetDone };
+const SigninOrSignup = { signin: 'signin', signup: 'signup' };
+
+export const actions = {
+  signup: { done, updateForm, resetDone },
+  signin: { done, updateForm, resetDone },
+  toggleSigninSignup: () => state => ({...state, signinOrSignup: (state.signinOrSignup === SigninOrSignup.signin ? SigninOrSignup.signup : SigninOrSignup.signin)})
+};
+
+export const state = {
+  signinOrSignup: SigninOrSignup.signin,
+  signup: signupFormState,
+  signin: signinFormState
+};
 
 export const view = (state, actions) => (
   <div>
     <h1>bblog</h1>
-    {!state.done && <SignupForm state={state} actions={actions} />}
-    {state.done && <SignupThanks actions={actions} />}
+    <button onclick={actions.toggleSigninSignup}>切り替え</button>
+    {state.signinOrSignup === SigninOrSignup.signin && !state.signin.done && <SigninForm state={state.signin} actions={actions.signin} />}
+    {state.signinOrSignup === SigninOrSignup.signup && !state.signup.done && <SignupForm state={state.signup} actions={actions.signup} />}
+    {state.signinOrSignup === SigninOrSignup.signin && state.signin.done && <SigninThanks actions={actions.signin} />}
+    {state.signinOrSignup === SigninOrSignup.signup && state.signup.done && <SignupThanks actions={actions.signup} />}
   </div>
 );

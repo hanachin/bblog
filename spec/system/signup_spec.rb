@@ -5,7 +5,7 @@ RSpec.describe 'Signup', type: :system do
     page.execute_script(%{ document.querySelector('input[name="#{name}"]').blur() })
   end
 
-  specify 'signup from form' do
+  pending 'signup from form' do
     visit '/'
 
     expect(page).to have_no_content('登録用のURLを送りました。')

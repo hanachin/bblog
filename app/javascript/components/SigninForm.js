@@ -1,22 +1,24 @@
-import "styles/components/SignupForm";
+import "styles/components/SigninForm";
 import { h } from "hyperapp";
-import { sendVerificationEmail } from "requests/sendVerificationEmail";
+import { sendSigninEmail } from "requests/sendSigninEmail";
 
-export const SignupForm = ({
-  state: { email, valid },
+export const SigninForm = ({
+  state,
   actions: { done, updateForm }
-}) => (
+}) => {
+  const { email, valid } = state;
+  return (
   <form
-    className="signup-form"
+    className="signin-form"
     onsubmit={e => {
       e.preventDefault();
-      sendVerificationEmail(email).then(
+      sendSigninEmail(email).then(
         () => done(),
         reason => alert(`エラーが発生しました ${reason}`)
       );
     }}
   >
-    <label className="signup-form__field">
+    <label className="signin-form__field">
       <span>メールアドレス</span>
       <input
         name="email"
@@ -32,10 +34,10 @@ export const SignupForm = ({
       />
     </label>
     <input
-      className="signup-form__submit"
+      className="signin-form__submit"
       type="submit"
-      value="👶登録"
+      value="👶ログイン"
       disabled={!valid}
     />
   </form>
-);
+)};
