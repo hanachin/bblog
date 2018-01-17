@@ -27,7 +27,7 @@ export const SigninForm = ({
           updateForm({
             name: e.target.name,
             value: e.target.value,
-            valid: e.target.form.checkValidity()
+            valid: e.target.validity.valid
           })
         }
         required
