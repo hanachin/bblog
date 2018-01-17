@@ -5,8 +5,7 @@ import { sendSigninEmail } from "requests/sendSigninEmail";
 export const SigninForm = ({
   state: { email, valid },
   actions: { done, updateForm, validate, invalidate }
-}) => {
-  return (
+}) => (
   <form
     className="signin-form"
     onsubmit={e => {
@@ -36,4 +35,4 @@ export const SigninForm = ({
       disabled={!valid}
     />
   </form>
-)};
+);

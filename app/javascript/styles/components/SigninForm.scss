@@ -9,6 +9,7 @@
 
   &__submit {
     @extend %baby-logs-form__submit;
+
     width: 6em;
 
     &:disabled {

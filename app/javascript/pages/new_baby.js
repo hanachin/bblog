@@ -12,12 +12,18 @@ import { signupFormState } from "states/signupFormState";
 import { signinFormState } from "states/signinFormState";
 import { resetDone } from "actions/resetDone";
 
-const SigninOrSignup = { signin: 'signin', signup: 'signup' };
+const SigninOrSignup = { signin: "signin", signup: "signup" };
 
 export const actions = {
   signup: { done, updateForm, resetDone, validate, invalidate },
   signin: { done, updateForm, resetDone, validate, invalidate },
-  toggleSigninSignup: () => state => ({...state, signinOrSignup: (state.signinOrSignup === SigninOrSignup.signin ? SigninOrSignup.signup : SigninOrSignup.signin)})
+  toggleSigninSignup: () => state => ({
+    ...state,
+    signinOrSignup:
+      state.signinOrSignup === SigninOrSignup.signin
+        ? SigninOrSignup.signup
+        : SigninOrSignup.signin
+  })
 };
 
 export const state = {
@@ -30,9 +36,17 @@ export const view = (state, actions) => (
   <div>
     <h1>bblog</h1>
     <button onclick={actions.toggleSigninSignup}>切り替え</button>
-    {state.signinOrSignup === SigninOrSignup.signin && !state.signin.done && <SigninForm state={state.signin} actions={actions.signin} />}
-    {state.signinOrSignup === SigninOrSignup.signup && !state.signup.done && <SignupForm state={state.signup} actions={actions.signup} />}
-    {state.signinOrSignup === SigninOrSignup.signin && state.signin.done && <SigninThanks actions={actions.signin} />}
-    {state.signinOrSignup === SigninOrSignup.signup && state.signup.done && <SignupThanks actions={actions.signup} />}
+    {state.signinOrSignup === SigninOrSignup.signin &&
+      !state.signin.done && (
+        <SigninForm state={state.signin} actions={actions.signin} />
+      )}
+    {state.signinOrSignup === SigninOrSignup.signup &&
+      !state.signup.done && (
+        <SignupForm state={state.signup} actions={actions.signup} />
+      )}
+    {state.signinOrSignup === SigninOrSignup.signin &&
+      state.signin.done && <SigninThanks actions={actions.signin} />}
+    {state.signinOrSignup === SigninOrSignup.signup &&
+      state.signup.done && <SignupThanks actions={actions.signup} />}
   </div>
 );
