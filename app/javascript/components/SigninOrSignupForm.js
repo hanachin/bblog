@@ -1,16 +1,15 @@
-import "styles/components/SigninForm";
 import { h } from "hyperapp";
-import { sendSigninEmail } from "requests/sendSigninEmail";
+import { sendSigninOrSignupEmail } from "requests/sendSigninOrSignupEmail";
 
-export const SigninForm = (
-  { actions: { done }, state: { email } },
+export const SigninOrSignupForm = (
+  { state: { email }, actions: { done } },
   children
 ) => (
   <form
-    className="signin-form"
+    className="signin-or-signup-form"
     onsubmit={e => {
       e.preventDefault();
-      sendSigninEmail(email).then(
+      sendSigninOrSignupEmail(email).then(
         () => done(),
         reason => alert(`エラーが発生しました ${reason}`)
       );

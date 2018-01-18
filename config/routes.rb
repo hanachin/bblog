@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   root to: 'babies#new'
 
+  post 'signin_or_signup_emails', to: 'signin_or_signup_emails#create'
+
   get 'signin/:code', to: 'signin#signin', as: :signin
   get 'verify/:code', to: 'verify_code#verify', as: :verify_code
-
-  post 'signin_emails', to: 'signin_emails#create'
-  post 'verification_emails', to: 'verification_emails#create'
 
   constraints(year: /\d{4}/, month: /\d{1,2}/, mday: /\d{1,2}/) do
     get 'baby/:year/:month/:mday', to: 'baby_logs#index', as: :baby_logs

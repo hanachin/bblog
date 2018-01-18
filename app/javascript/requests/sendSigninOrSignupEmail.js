@@ -1,9 +1,9 @@
 import { Urls } from "constants/Urls.js.erb";
 import { CsrfProtection } from "requests/CsrfProtection";
 
-export const sendSigninEmail = email =>
+export const sendSigninOrSignupEmail = email =>
   new Promise((resolve, reject) => {
-    const { method, path } = Urls.signinEmails;
+    const { method, path } = Urls.signinOrSignupEmails;
     const request = new XMLHttpRequest();
 
     request.open(method, path);
