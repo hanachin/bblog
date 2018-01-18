@@ -17,7 +17,6 @@
   }
 }
 
-
 %button {
   appearance: none;
   font-size: 2rem;
@@ -40,7 +39,7 @@
   }
 
   &__button {
-    @extend %button;;
+    @extend %button;
   }
 
   &__submit {

@@ -12,7 +12,7 @@ export const SigninOrSignupForm = (
       try {
         invalidate();
         await sendSigninOrSignupEmail(email);
-        updateForm('email', '');
+        updateForm("email", "");
         done();
       } catch (reason) {
         alert(`エラーが発生しました ${reason}`);
