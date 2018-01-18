@@ -1,19 +1,12 @@
 import "styles/components/SignupThanks";
 import { h } from "hyperapp";
+import { ResetDoneButton } from "components/ResetDoneButton";
 
-export const SignupThanks = ({ actions: { resetDone } }) => (
+export const SignupThanks = ({ actions }) => (
   <p>
     <span>
       入力されたメールアドレスに登録用のURLを送りました。ご確認ください。
     </span>
-    <button
-      className="signup-thanks_button"
-      onclick={e => {
-        e.preventDefault();
-        resetDone();
-      }}
-    >
-      戻る
-    </button>
+    <ResetDoneButton actions={actions} />
   </p>
 );

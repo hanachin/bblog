@@ -1,0 +1,5 @@
+@import "placeholders";
+
+.signin-submit {
+  @extend %button;
+}

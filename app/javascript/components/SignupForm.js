@@ -2,10 +2,10 @@ import "styles/components/SignupForm";
 import { h } from "hyperapp";
 import { sendVerificationEmail } from "requests/sendVerificationEmail";
 
-export const SignupForm = ({
-  state: { email, valid },
-  actions: { done, updateForm, validate, invalidate }
-}) => (
+export const SignupForm = (
+  { state: { email }, actions: { done } },
+  children
+) => (
   <form
     className="signup-form"
     onsubmit={e => {
@@ -16,23 +16,6 @@ export const SignupForm = ({
       );
     }}
   >
-    <label className="signup-form__field">
-      <span>メールアドレス</span>
-      <input
-        name="email"
-        type="email"
-        onchange={e => {
-          updateForm({ name: e.target.name, value: e.target.value });
-          e.target.validity.valid ? validate() : invalidate();
-        }}
-        required
-      />
-    </label>
-    <input
-      className="signup-form__submit"
-      type="submit"
-      value="👶登録"
-      disabled={!valid}
-    />
+    {children}
   </form>
 );

@@ -2,7 +2,7 @@
 
 %text-like-input {
   appearance: none;
-  font-size: 2em;
+  font-size: 2rem;
   border: 5px solid $border-light;
   border-radius: 5px;
   background-color: $bg-light;
@@ -17,6 +17,19 @@
   }
 }
 
+
+%button {
+  appearance: none;
+  font-size: 2rem;
+  position: relative;
+  bottom: 10px;
+  display: block;
+  margin: 60px auto 0 auto;
+  border: 5px solid $border-light;
+  border-radius: 5px;
+  background-color: $bg-light;
+}
+
 %baby-logs-form {
   grid-column: 1 / -1;
 
@@ -27,16 +40,7 @@
   }
 
   &__button {
-    appearance: none;
-    font-size: 2em;
-    position: relative;
-    bottom: 10px;
-    display: block;
-    width: 5em;
-    margin: 60px auto 0 auto;
-    border: 5px solid $border-light;
-    border-radius: 5px;
-    background-color: $bg-light;
+    @extend %button;;
   }
 
   &__submit {

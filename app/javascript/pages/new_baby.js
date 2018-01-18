@@ -11,6 +11,9 @@ import { updateForm } from "actions/updateForm";
 import { signupFormState } from "states/signupFormState";
 import { signinFormState } from "states/signinFormState";
 import { resetDone } from "actions/resetDone";
+import { EmailField } from "components/EmailField";
+import { SigninSubmit } from "components/SigninSubmit";
+import { SignupSubmit } from "components/SignupSubmit";
 
 const SigninOrSignup = { signin: "signin", signup: "signup" };
 
@@ -38,11 +41,17 @@ export const view = (state, actions) => (
     <button onclick={actions.toggleSigninSignup}>切り替え</button>
     {state.signinOrSignup === SigninOrSignup.signin &&
       !state.signin.done && (
-        <SigninForm state={state.signin} actions={actions.signin} />
+        <SigninForm state={state.signin} actions={actions.signin}>
+          <EmailField actions={actions.signin} />
+          <SigninSubmit state={state.signin} />
+        </SigninForm>
       )}
     {state.signinOrSignup === SigninOrSignup.signup &&
       !state.signup.done && (
-        <SignupForm state={state.signup} actions={actions.signup} />
+        <SignupForm state={state.signup} actions={actions.signup}>
+          <EmailField actions={actions.signup} />
+          <SignupSubmit state={state.signup} />
+        </SignupForm>
       )}
     {state.signinOrSignup === SigninOrSignup.signin &&
       state.signin.done && <SigninThanks actions={actions.signin} />}

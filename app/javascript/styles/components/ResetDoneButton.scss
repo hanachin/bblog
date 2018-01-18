@@ -1,0 +1,5 @@
+@import "placeholders";
+
+.reset-done-button {
+  @extend %button;
+}

@@ -1,0 +1,10 @@
+@import "placeholders";
+
+.email-field {
+  display: flex;
+  flex-direction: column;
+
+  input[type="email"] {
+    @extend %text-like-input;
+  }
+}
