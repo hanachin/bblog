@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import { h, app } from "hyperapp";
 import { actions, state, view } from "pages/new_baby";
 
