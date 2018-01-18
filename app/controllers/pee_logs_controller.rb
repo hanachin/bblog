@@ -1,4 +1,4 @@
-class PeeLogsController < ApplicationController
+class PeeLogsController < BabyController
   def create
     pee_log = PeeLog.new(create_params)
     if pee_log.save
@@ -11,6 +11,6 @@ class PeeLogsController < ApplicationController
   private
 
   def create_params
-    params.permit(:diaper_usage, :started_at)
+    params.permit(:diaper_usage, :started_at).merge(baby: baby)
   end
 end

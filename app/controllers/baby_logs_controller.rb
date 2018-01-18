@@ -1,4 +1,4 @@
-class BabyLogsController < ApplicationController
+class BabyLogsController < BabyController
   class Baby < ::Baby
     def baby_logs_json(date)
       BabyLog.to_json(baby_logs_condition(date))
@@ -20,19 +20,16 @@ class BabyLogsController < ApplicationController
   end
 
   def index
-    baby = fetch_baby
     respond_to do |f|
       f.html
       f.json { render json: baby.baby_logs_json(date) }
     end
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path
   end
 
   private
 
-  def fetch_baby
-    Baby.find(session[:baby_id])
+  def baby
+    Baby.find(super.id)
   end
 
   def date

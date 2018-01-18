@@ -1,4 +1,4 @@
-class BathLogsController < ApplicationController
+class BathLogsController < BabyController
   def create
     bath_log = BathLog.new(create_params)
     if bath_log.save
@@ -11,6 +11,6 @@ class BathLogsController < ApplicationController
   private
 
   def create_params
-    params.permit(:duration_min, :started_at)
+    params.permit(:duration_min, :started_at).merge(baby: baby)
   end
 end

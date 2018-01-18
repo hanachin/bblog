@@ -1,30 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'GET /baby/:year/:month/:mday', type: :request do
-  shared_context 'signed in' do
-    let(:baby) { create(:baby) }
-    let(:signin_code) { create(:signin_code, baby: baby) }
+  let(:baby) { create(:baby) }
 
-    before { get signin_path(code: signin_code.code) }
-  end
+  before {|ex| signin(baby) if ex.metadata[:signed_in] }
 
   it 'redirect to root_path' do
     get baby_logs_path(year: 2018, month: 1, mday: 2)
     redirect_to root_path
   end
 
-  context 'when baby logs are empty' do
-    include_context 'signed in'
-
+  context 'when baby logs are empty', :signed_in do
     it 'returns empty baby logs' do
       get baby_logs_path(year: 2018, month: 1, mday: 2, format: :json)
       expect(response.body).to eq("{}")
     end
   end
 
-  context 'when there are some baby logs' do
-    include_context 'signed in'
-
+  context 'when there are some baby logs', :signed_in do
     before do
       # yesterday baby logs
       create(:poo_log, baby_id: baby.id, started_at: Time.zone.local(2018, 1, 1, 20, 59, 59))

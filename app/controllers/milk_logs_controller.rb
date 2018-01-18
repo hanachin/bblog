@@ -1,4 +1,4 @@
-class MilkLogsController < ApplicationController
+class MilkLogsController < BabyController
   def create
     milk_log = MilkLog.new(create_params)
     if milk_log.save
@@ -11,6 +11,6 @@ class MilkLogsController < ApplicationController
   private
 
   def create_params
-    params.permit(:duration_min, :milk_volume_ml, :started_at)
+    params.permit(:duration_min, :milk_volume_ml, :started_at).merge(baby: baby)
   end
 end
