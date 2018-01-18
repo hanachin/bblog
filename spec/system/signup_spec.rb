@@ -5,19 +5,23 @@ RSpec.describe 'Signup', type: :system do
     page.execute_script(%{ document.querySelector('input[name="#{name}"]').blur() })
   end
 
-  pending 'signup from form' do
+  it 'signup from form' do
     visit '/'
-
-    expect(page).to have_no_content('登録用のURLを送りました。')
 
     fill_in 'email', with: 'test@example.com'
     blur('email')
     click_button '👶登録'
-    expect(page).to have_content('登録用のURLを送りました。')
+    expect(page).to have_content('入力されたメールアドレスにURLを送りました。ご確認ください。 ')
     expect(page).to have_no_button('👶登録')
 
-    click_on '戻る'
-    expect(page).to have_no_content('登録用のURLを送りました。')
-    expect(page).to have_button('👶登録')
+    mail = VerificationMailer.deliveries.detect { |m| m.to == ['test@example.com'] }
+    url = mail.body.to_s[URI.regexp]
+    visit url
+    expect(page).to have_content('👶')
+    expect(page).to have_content('🤱')
+    expect(page).to have_content('🍼')
+    expect(page).to have_content('💩')
+    expect(page).to have_content('💧')
+    expect(page).to have_content('🛀')
   end
 end
