@@ -3,7 +3,7 @@ import { h } from "hyperapp";
 import { done } from "actions/done";
 import { invalidate } from "actions/invalidate";
 import { resetDone } from "actions/resetDone";
-import { updateForm } from "actions/updateForm";
+import { updateEmail } from "actions/updateEmail";
 import { validate } from "actions/validate";
 import { EmailField } from "components/EmailField";
 import { SigninOrSignupForm } from "components/SigninOrSignupForm";
@@ -14,7 +14,7 @@ export {
   signinOrSignupFormState as state
 } from "states/signinOrSignupFormState";
 
-export const actions = { done, updateForm, resetDone, validate, invalidate };
+export const actions = { done, updateEmail, resetDone, validate, invalidate };
 
 export const view = (state, actions) => (
   <div>

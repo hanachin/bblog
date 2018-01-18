@@ -2,7 +2,7 @@ import { h } from "hyperapp";
 import { sendSigninOrSignupEmail } from "requests/sendSigninOrSignupEmail";
 
 export const SigninOrSignupForm = (
-  { state: { email }, actions: { done, invalidate, updateForm, validate } },
+  { state: { email }, actions: { done, invalidate, updateEmail, validate } },
   children
 ) => (
   <form
@@ -12,7 +12,7 @@ export const SigninOrSignupForm = (
       try {
         invalidate();
         await sendSigninOrSignupEmail(email);
-        updateForm("email", "");
+        updateEmail("");
         done();
       } catch (reason) {
         alert(`エラーが発生しました ${reason}`);
