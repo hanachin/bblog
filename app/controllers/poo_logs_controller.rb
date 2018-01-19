@@ -11,6 +11,6 @@ class PooLogsController < BabyController
   private
 
   def create_params
-    params.permit(:color, :diaper_usage, :started_at).merge(baby: baby)
+    params.permit(:color, :diaper_usage, :started_at).merge(baby: baby).tap { |h| h[:color] = Integer(h[:color]) if h[:color] }
   end
 end
