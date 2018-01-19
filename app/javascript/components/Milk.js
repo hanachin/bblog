@@ -3,9 +3,25 @@ import { h } from "hyperapp";
 import { CurrentTime } from "components/CurrentTime";
 import { TimeSelect } from "components/TimeSelect";
 import { MilkAmountSelect } from "components/MilkAmountSelect";
+import { Urls } from "constants/Urls.js.erb";
+import { sendRequestFromForm } from "requests/sendRequestFromForm";
 
-export const Milk = ({ state, actions }) => (
-  <form className="milk">
+export const Milk = ({ actions: { done, resetDone }, state }) => (
+  <form
+    action={Urls.createMilkLog.path}
+    className="milk"
+    method={Urls.createMilkLog.method}
+    onsubmit={async e => {
+      e.preventDefault();
+      try {
+        resetDone();
+        await sendRequestFromForm(e.target);
+        done();
+      } catch (reason) {
+        alert(`エラーが発生しました ${reason}`);
+      }
+    }}
+  >
     <label className="milk__field">
       <span>開始時刻</span>
       <CurrentTime name="started_at" />
@@ -18,6 +34,11 @@ export const Milk = ({ state, actions }) => (
       <span>量</span>
       <MilkAmountSelect name="milk_volume_ml" />
     </label>
-    <input className="milk__submit" type="submit" value="🍼記録" />
+    <input
+      className="milk__submit"
+      type="submit"
+      value="🍼記録"
+      disabled={!state.done}
+    />
   </form>
 );

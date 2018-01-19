@@ -13,7 +13,8 @@ export const actions = {
   changeLogType,
   loadLogs,
   bath: { done, resetDone },
-  breastMilk: { done, resetDone }
+  breastMilk: { done, resetDone },
+  milk: { done, resetDone }
 };
 
 export const view = (state, actions) => (
