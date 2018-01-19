@@ -16,7 +16,7 @@ export const Main = ({ state, actions }) => (
       <Milk state={state.milk} actions={actions.milk} />
     )}
     {state.logType === "💩" && <Poo state={state} actions={actions} />}
-    {state.logType === "💧" && <Pee state={state} actions={actions} />}
+    {state.logType === "💧" && <Pee state={state.pee} actions={actions.pee} />}
     {state.logType === "🛀" && (
       <Bath state={state.bath} actions={actions.bath} />
     )}

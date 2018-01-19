@@ -14,7 +14,8 @@ export const actions = {
   loadLogs,
   bath: { done, resetDone },
   breastMilk: { done, resetDone },
-  milk: { done, resetDone }
+  milk: { done, resetDone },
+  pee: { done, resetDone }
 };
 
 export const view = (state, actions) => (
