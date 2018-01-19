@@ -3,9 +3,25 @@ import { h } from "hyperapp";
 import { Breasts } from "components/Breasts";
 import { CurrentTime } from "components/CurrentTime";
 import { TimeSelect } from "components/TimeSelect";
+import { Urls } from "constants/Urls.js.erb";
+import { sendRequestFromForm } from "requests/sendRequestFromForm";
 
-export const BreastMilk = ({ state, actions }) => (
-  <form className="breast-milk">
+export const BreastMilk = ({ actions: { done, resetDone }, state }) => (
+  <form
+    action={Urls.createBreastMilkLog.path}
+    className="breast-milk"
+    method={Urls.createBreastMilkLog.method}
+    onsubmit={async e => {
+      e.preventDefault();
+      try {
+        resetDone();
+        await sendRequestFromForm(e.target);
+        done();
+      } catch (reason) {
+        alert(`エラーが発生しました ${reason}`);
+      }
+    }}
+  >
     <label className="breast-milk__field">
       <Breasts name="side" />
     </label>
@@ -17,6 +33,11 @@ export const BreastMilk = ({ state, actions }) => (
       <span>時間</span>
       <TimeSelect name="duration_min" />
     </label>
-    <input className="breast-milk__submit" type="submit" value="🤱記録" />
+    <input
+      className="breast-milk__submit"
+      type="submit"
+      value="🤱記録"
+      disabled={!state.done}
+    />
   </form>
 );

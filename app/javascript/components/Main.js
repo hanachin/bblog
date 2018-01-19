@@ -9,7 +9,9 @@ import { Poo } from "components/Poo";
 export const Main = ({ state, actions }) => (
   <main>
     {state.logType === "👶" && <Logs state={state} actions={actions} />}
-    {state.logType === "🤱" && <BreastMilk state={state} actions={actions} />}
+    {state.logType === "🤱" && (
+      <BreastMilk state={state.breastMilk} actions={actions.breastMilk} />
+    )}
     {state.logType === "🍼" && <Milk state={state} actions={actions} />}
     {state.logType === "💩" && <Poo state={state} actions={actions} />}
     {state.logType === "💧" && <Pee state={state} actions={actions} />}

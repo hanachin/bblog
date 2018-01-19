@@ -9,7 +9,12 @@ import { resetDone } from "actions/resetDone";
 
 export { babyLogsState as state } from "states/babyLogsState";
 
-export const actions = { changeLogType, loadLogs, bath: { done, resetDone } };
+export const actions = {
+  changeLogType,
+  loadLogs,
+  bath: { done, resetDone },
+  breastMilk: { done, resetDone }
+};
 
 export const view = (state, actions) => (
   <div>
