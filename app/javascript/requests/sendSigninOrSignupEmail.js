@@ -1,7 +1,7 @@
 import { Urls } from "constants/Urls.js.erb";
 import { CsrfProtection } from "requests/CsrfProtection";
 
-export const sendSigninOrSignupEmail = email =>
+export const sendSigninOrSignupEmail = formData =>
   new Promise((resolve, reject) => {
     const { method, path } = Urls.signinOrSignupEmails;
     const request = new XMLHttpRequest();
@@ -22,10 +22,5 @@ export const sendSigninOrSignupEmail = email =>
       reject(new Error("ネットワークエラー"))
     );
 
-    request.setRequestHeader(
-      "Content-Type",
-      "application/x-www-form-urlencoded"
-    );
-
-    request.send(`email=${escape(email)}`);
+    request.send(formData);
   });

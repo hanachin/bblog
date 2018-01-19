@@ -1,18 +1,13 @@
 import "styles/components/EmailField";
 import { h } from "hyperapp";
 
-export const EmailField = ({
-  actions: { invalidate, updateEmail, validate }
-}) => (
+export const EmailField = ({ name, actions: { invalidate, validate } }) => (
   <label className="email-field">
     <span>メールアドレス</span>
     <input
-      name="email"
+      name={name}
       type="email"
-      onchange={e => {
-        updateEmail(e.target.value);
-        e.target.validity.valid ? validate() : invalidate();
-      }}
+      onchange={e => (e.target.validity.valid ? validate() : invalidate())}
       required
     />
   </label>

@@ -3,7 +3,6 @@ import { h } from "hyperapp";
 import { done } from "actions/done";
 import { invalidate } from "actions/invalidate";
 import { resetDone } from "actions/resetDone";
-import { updateEmail } from "actions/updateEmail";
 import { validate } from "actions/validate";
 import { EmailField } from "components/EmailField";
 import { SigninOrSignupForm } from "components/SigninOrSignupForm";
@@ -14,14 +13,14 @@ export {
   signinOrSignupFormState as state
 } from "states/signinOrSignupFormState";
 
-export const actions = { done, updateEmail, resetDone, validate, invalidate };
+export const actions = { done, resetDone, validate, invalidate };
 
 export const view = (state, actions) => (
   <div>
     <h1>bblog</h1>
     {!state.done && (
       <SigninOrSignupForm state={state} actions={actions}>
-        <EmailField actions={actions} />
+        <EmailField actions={actions} name="email" />
         <SignupSubmit state={state} />
         <SigninSubmit state={state} />
       </SigninOrSignupForm>

@@ -2,7 +2,7 @@ import { h } from "hyperapp";
 import { sendSigninOrSignupEmail } from "requests/sendSigninOrSignupEmail";
 
 export const SigninOrSignupForm = (
-  { state: { email }, actions: { done, invalidate, updateEmail, validate } },
+  { actions: { done, invalidate, validate } },
   children
 ) => (
   <form
@@ -11,8 +11,7 @@ export const SigninOrSignupForm = (
       e.preventDefault();
       try {
         invalidate();
-        await sendSigninOrSignupEmail(email);
-        updateEmail("");
+        await sendSigninOrSignupEmail(new FormData(e.target));
         done();
       } catch (reason) {
         alert(`エラーが発生しました ${reason}`);
