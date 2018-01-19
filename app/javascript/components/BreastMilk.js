@@ -7,15 +7,15 @@ import { TimeSelect } from "components/TimeSelect";
 export const BreastMilk = ({ state, actions }) => (
   <form className="breast-milk">
     <label className="breast-milk__field">
-      <Breasts />
+      <Breasts name="side" />
     </label>
     <label className="breast-milk__field">
       <span>開始時刻</span>
-      <CurrentTime />
+      <CurrentTime name="started_at" />
     </label>
     <label className="breast-milk__field">
       <span>時間</span>
-      <TimeSelect />
+      <TimeSelect name="duration_min" />
     </label>
     <input className="breast-milk__submit" type="submit" value="🤱記録" />
   </form>

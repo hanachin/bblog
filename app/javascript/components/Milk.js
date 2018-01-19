@@ -8,15 +8,15 @@ export const Milk = ({ state, actions }) => (
   <form className="milk">
     <label className="milk__field">
       <span>開始時刻</span>
-      <CurrentTime />
+      <CurrentTime name="started_at" />
     </label>
     <label className="milk__field">
       <span>時間</span>
-      <TimeSelect />
+      <TimeSelect name="duration_min" />
     </label>
     <label className="milk__field">
       <span>量</span>
-      <MilkAmountSelect />
+      <MilkAmountSelect name="milk_volume_ml" />
     </label>
     <input className="milk__submit" type="submit" value="🍼記録" />
   </form>

@@ -8,15 +8,15 @@ export const Poo = ({ state, actions }) => (
   <form className="poo">
     <label className="poo__field">
       <span>時刻</span>
-      <CurrentTime />
+      <CurrentTime name="started_at" />
     </label>
     <label className="poo__field">
       <span>色</span>
-      <PooColor />
+      <PooColor name="color" />
     </label>
     <label className="poo__field">
       <span>量</span>
-      <DiaperUsage name="poo" unit="💩" />
+      <DiaperUsage name="diaper_usage" unit="💩" />
     </label>
     <input className="poo__submit" type="submit" value="💩記録" />
   </form>

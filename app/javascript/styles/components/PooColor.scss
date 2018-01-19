@@ -4,7 +4,7 @@
   display: flex;
   margin-top: 10px;
 
-  input[name="poo-color"] {
+  &__color {
     appearance: none;
     flex: auto;
     margin: 0;

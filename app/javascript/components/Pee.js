@@ -7,11 +7,11 @@ export const Pee = ({ state, actions }) => (
   <form className="pee">
     <label className="pee__field">
       <span>時刻</span>
-      <CurrentTime />
+      <CurrentTime name="started_at" />
     </label>
     <label className="pee__field">
       <span>量</span>
-      <DiaperUsage name="pee" unit="💧" />
+      <DiaperUsage name="diaper_usage" unit="💧" />
     </label>
     <input className="pee__submit" type="submit" value="💧記録" />
   </form>
