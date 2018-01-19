@@ -12,10 +12,10 @@ class BabyLog
           baby_logs.started_at
         from (
           (#{BathLog.baby_logs_sql(condition)})
-          union (#{BreastMilkLog.baby_logs_sql(condition)})
-          union (#{MilkLog.baby_logs_sql(condition)})
-          union (#{PeeLog.baby_logs_sql(condition)})
-          union (#{PooLog.baby_logs_sql(condition)})
+          union all (#{BreastMilkLog.baby_logs_sql(condition)})
+          union all (#{MilkLog.baby_logs_sql(condition)})
+          union all (#{PeeLog.baby_logs_sql(condition)})
+          union all (#{PooLog.baby_logs_sql(condition)})
         ) as baby_logs
       )
       SQL
