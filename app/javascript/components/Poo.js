@@ -3,9 +3,25 @@ import { h } from "hyperapp";
 import { CurrentTime } from "components/CurrentTime";
 import { PooColor } from "components/PooColor";
 import { DiaperUsage } from "components/DiaperUsage";
+import { Urls } from "constants/Urls.js.erb";
+import { sendRequestFromForm } from "requests/sendRequestFromForm";
 
-export const Poo = ({ state, actions }) => (
-  <form className="poo">
+export const Poo = ({ actions: { done, resetDone }, state }) => (
+  <form
+    action={Urls.createPooLog.path}
+    className="poo"
+    method={Urls.createPooLog.method}
+    onsubmit={async e => {
+      e.preventDefault();
+      try {
+        resetDone();
+        await sendRequestFromForm(e.target);
+        done();
+      } catch (reason) {
+        alert(`エラーが発生しました ${reason}`);
+      }
+    }}
+  >
     <label className="poo__field">
       <span>時刻</span>
       <CurrentTime name="started_at" />
@@ -18,6 +34,11 @@ export const Poo = ({ state, actions }) => (
       <span>量</span>
       <DiaperUsage name="diaper_usage" unit="💩" />
     </label>
-    <input className="poo__submit" type="submit" value="💩記録" />
+    <input
+      className="poo__submit"
+      type="submit"
+      value="💩記録"
+      disabled={!state.done}
+    />
   </form>
 );

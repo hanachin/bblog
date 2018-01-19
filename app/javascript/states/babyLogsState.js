@@ -6,5 +6,6 @@ export const babyLogsState = {
   bath: { done: true },
   breastMilk: { done: true },
   milk: { done: true },
-  pee: { done: true }
+  pee: { done: true },
+  poo: { done: true }
 };
