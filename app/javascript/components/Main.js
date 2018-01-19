@@ -13,6 +13,8 @@ export const Main = ({ state, actions }) => (
     {state.logType === "🍼" && <Milk state={state} actions={actions} />}
     {state.logType === "💩" && <Poo state={state} actions={actions} />}
     {state.logType === "💧" && <Pee state={state} actions={actions} />}
-    {state.logType === "🛀" && <Bath state={state} actions={actions} />}
+    {state.logType === "🛀" && (
+      <Bath state={state.bath} actions={actions.bath} />
+    )}
   </main>
 );
