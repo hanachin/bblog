@@ -1,0 +1,33 @@
+@keyframes loading-splash {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(10) translateY(-10vh);
+  }
+}
+
+.logging-splash {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+
+  & > span {
+    flex: 1;
+    text-align: center;
+    display: none;
+  }
+
+  &:not(.logging-splash--done) {
+    & > span {
+      opacity: 0;
+      display: inline-block;
+      animation: loading-splash 1s cubic-bezier(0.26, 1.08, 0.75, -0.14) 1;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import "styles/components/Milk";
 import { h } from "hyperapp";
 import { CurrentTime } from "components/CurrentTime";
+import { LoggingSplash, waitLoggingSplash } from "components/LoggingSplash";
 import { TimeSelect } from "components/TimeSelect";
 import { MilkAmountSelect } from "components/MilkAmountSelect";
 import { Urls } from "constants/Urls.js.erb";
@@ -15,7 +16,7 @@ export const Milk = ({ actions: { done, resetDone }, state }) => (
       e.preventDefault();
       try {
         resetDone();
-        await sendRequestFromForm(e.target);
+        await Promise.all([waitLoggingSplash(), sendRequestFromForm(e.target)]);
         done();
       } catch (reason) {
         alert(`エラーが発生しました ${reason}`);
@@ -40,5 +41,6 @@ export const Milk = ({ actions: { done, resetDone }, state }) => (
       value="🍼記録"
       disabled={!state.done}
     />
+    <LoggingSplash done={state.done} logType="🍼" />
   </form>
 );

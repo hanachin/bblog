@@ -2,6 +2,7 @@ import "styles/components/BreastMilk";
 import { h } from "hyperapp";
 import { Breasts } from "components/Breasts";
 import { CurrentTime } from "components/CurrentTime";
+import { LoggingSplash, waitLoggingSplash } from "components/LoggingSplash";
 import { TimeSelect } from "components/TimeSelect";
 import { Urls } from "constants/Urls.js.erb";
 import { sendRequestFromForm } from "requests/sendRequestFromForm";
@@ -15,7 +16,7 @@ export const BreastMilk = ({ actions: { done, resetDone }, state }) => (
       e.preventDefault();
       try {
         resetDone();
-        await sendRequestFromForm(e.target);
+        await Promise.all([waitLoggingSplash(), sendRequestFromForm(e.target)]);
         done();
       } catch (reason) {
         alert(`エラーが発生しました ${reason}`);
@@ -39,5 +40,6 @@ export const BreastMilk = ({ actions: { done, resetDone }, state }) => (
       value="🤱記録"
       disabled={!state.done}
     />
+    <LoggingSplash done={state.done} logType="🤱" />
   </form>
 );
