@@ -11,6 +11,7 @@
 
 .logging-splash {
   display: flex;
+  justify-content: space-around;
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -18,8 +19,6 @@
   transform: translateX(-50%);
 
   & > span {
-    flex: 1;
-    text-align: center;
     display: none;
   }
 
