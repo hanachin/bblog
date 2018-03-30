@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: bblog-app
+  name: bblog-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bblog-app
+  template:
+    metadata:
+      labels:
+        app: bblog-app
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_URL
+          value: postgres://bblog@bblog-db
+        - name: BBLOG_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bblog
+              key: password
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              name: bblog
+              key: secret_key_base
+        image: gcr.io/bblog-hanachin/bblog:latest
+        name: app
+        ports:
+        - containerPort: 3000

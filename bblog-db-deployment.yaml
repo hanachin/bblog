@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: bblog-db
+  labels:
+    app: bblog-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bblog-db
+  template:
+    metadata:
+      labels:
+        app: bblog-db
+    spec:
+      containers:
+      - image: postgres:10.1
+        name: bblog-db
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        - name: POSTGRES_USER
+          value: bblog
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bblog
+              key: password
+        ports:
+        - containerPort: 5432
+          name: bblog-db
+        volumeMounts:
+        - name: bblog-db-storage
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: bblog-db-storage
+        gcePersistentDisk:
+          pdName: bblog-db-disk
+          fsType: ext4

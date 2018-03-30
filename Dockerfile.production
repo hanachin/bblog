@@ -1,0 +1,34 @@
+FROM ruby:2.5.0
+
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
+
+ENV RAILS_ENV production
+ENV NODE_ENV production
+ENV RAILS_LOG_TO_STDOUT true
+ENV RAILS_SERVE_STATIC_FILES true
+
+RUN useradd -m app
+RUN mkdir /home/app/bblog
+WORKDIR /home/app/bblog
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+  && apt-get install -y nodejs
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  && apt-get update \
+  && apt-get install -y yarn
+
+COPY Gemfile /home/app/bblog
+COPY Gemfile.lock /home/app/bblog
+RUN bundle install --deployment --with=production
+
+COPY package.json /home/app/bblog
+COPY yarn.lock /home/app/bblog
+RUN yarn install
+
+COPY . /home/app/bblog
+RUN chown -R app:app /home/app/bblog
+USER app
+
+RUN bundle exec rails assets:precompile
